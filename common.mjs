@@ -1,19 +1,21 @@
 export function add_element(parent, child_type, text = null, attributes = null, namespace = null) {
-    let element;
+    let child;
     if (namespace != null) {
-        element = document.createElementNS(namespace, child_type)
+        child = document.createElementNS(namespace, child_type)
     } else {
-        element = document.createElement(child_type)
+        child = document.createElement(child_type)
     }
     if (attributes != null) {
         for (const key in attributes) {
-            element.setAttribute(key, attributes[key])
+            child.setAttribute(key, attributes[key])
         }
     }
     if (text != null) {
-        element.textContent = text
+        child.textContent = text
     }
-    parent.appendChild(element)
+    parent.appendChild(child)
+
+    return child
 }
 
 export function remove_children(parent, type) {

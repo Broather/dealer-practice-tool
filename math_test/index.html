@@ -9,9 +9,71 @@
         <link rel="stylesheet" href="../style.css">
     </head>
 
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: gray;
+        }
+    </style>
+
     <body>
-        <a href="../index.html">main menu</a>
-        <p>this is a math test</p>
+        <div class="row">
+            <a href="../index.html">main menu</a>
+            <h2>mathematics test</h2>
+        </div>
+
+        <table class="column" id="t1"></table>
+        <table class="column" id="t2"></table>
+
     </body>
+    <script type="module">
+        import { test, Generator } from "./test_gen.js"
+        import { add_element } from "../common.mjs"
+
+        addEventListener("load", () => {
+            populate(test.BLACKJACK, t1, 10)
+            populate(test.BLACKJACK, t1, 10)
+        })
+
+        function populate(type, parent, count) {
+            const generator = new Generator(type, count)
+
+            const header_row = add_element(parent, "tr")
+            generator.get_headers().forEach((header) => add_element(header_row, "th", header))
+            for (let i = 0; i < count; i++) {
+                let row = add_element(parent, "tr")
+                for (let j = 0; j < generator.get_headers().length; j++) {
+                    add_element(row, "td", generator.get_next())
+                }
+            }
+        }
+
+    </script>
 
 </html>
