@@ -1,0 +1,95 @@
+.center {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+a:link,
+a:visited {
+    background-color: whitesmoke;
+    color: black;
+    font-size: 20px;
+    padding: 1px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    border-width: 1px;
+    border-style: outset;
+    border-color: buttonborder;
+}
+
+a:hover,
+a:active {
+    background-color: lightgray;
+}
+
+span {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+p {
+    margin-top: 5px;
+}
+
+button,
+input,
+label {
+    font-size: 25px;
+    width: 100px;
+}
+
+button.big,
+input.big {
+    font-size: 35px;
+    width: 150px;
+}
+
+.flex {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+rect,
+polygon {
+    fill: white;
+    stroke: black;
+    stroke-width: .2
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+circle {
+    fill: darkred;
+}
+
+text {
+    fill: white;
+    font-size: 2px;
+}
+
+.correct {
+    background-color: green;
+    color: white
+}
+
+.correct:hover {
+    background-color: darkgreen;
+}
+
+.incorrect {
+    background-color: red;
+    color: white
+}
+
+.incorrect:hover {
+    background-color: darkred;
+}

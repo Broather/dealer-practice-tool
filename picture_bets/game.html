@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="eng">
+
+    <head>
+        <meta charset="utf-8">
+        <title>picture bet minigame</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style.css">
+        <script type="module" src="./game_logic.js"></script>
+    </head>
+
+    <body>
+        <a href="index.html">picture bet menu</a>
+        <div class="center">
+            <div class="flex">
+                <span id="counter"></span>
+            </div>
+            <svg id="table" viewBox="-1 -3 47 34" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="12" height="10" />
+                <rect x="12" y="0" width="12" height="10" />
+                <rect x="24" y="0" width="12" height="10" />
+                <rect x="0" y="10" width="12" height="10" />
+                <rect x="12" y="10" width="12" height="10" />
+                <rect x="24" y="10" width="12" height="10" />
+                <rect x="0" y="20" width="12" height="10" />
+                <rect x="12" y="20" width="12" height="10" />
+                <rect x="24" y="20" width="12" height="10" />
+                <rect x="0" y="-.1" width="36" height="1" />
+                <polygon points="36,0 45,15 36,30"></polygon>
+            </svg>
+            <div class="flex" id="buttons">
+            </div>
+            <div class="flex" style="margin-top: 30px;">
+                <button class="big" id="next" hidden>Next</button>
+            </div>
+        </div>
+    </body>
+
+
+</html>
