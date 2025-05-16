@@ -40,6 +40,31 @@
         th {
             background-color: gray;
         }
+
+        td input {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            background: transparent;
+            font: inherit;
+        }
+
+        td input:focus {
+            background-color: #fff;
+            border: 1px solid #007bff;
+            box-shadow: inset 0 0 0 1px #007bff;
+        }
+
+        .correct {
+            background-color: #c8e6c9;
+        }
+
+        .incorrect {
+            background-color: #ffcdd2;
+        }
     </style>
 
     <body>
@@ -48,8 +73,15 @@
             <h2>mathematics test</h2>
         </div>
 
-        <table class="column" id="t1"></table>
-        <table class="column" id="t2"></table>
+        <form action="">
+            <div class="row">
+                <table class="column" id="t1"></table>
+                <table class="column" id="t2"></table>
+            </div>
+            <div class="row">
+                <input id="submit" type="submit" value="Submit">
+            </div>
+        </form>
 
     </body>
     <script type="module">
@@ -58,7 +90,11 @@
 
         addEventListener("load", () => {
             populate(test.BLACKJACK, t1, 10)
-            populate(test.BLACKJACK, t1, 10)
+        })
+
+        addEventListener("submit", (e) => {
+            e.preventDefault()
+            check_answers(document.querySelectorAll('input[answer]'))
         })
 
         function populate(type, parent, count) {
@@ -67,12 +103,26 @@
             const header_row = add_element(parent, "tr")
             generator.get_headers().forEach((header) => add_element(header_row, "th", header))
             for (let i = 0; i < count; i++) {
-                let row = add_element(parent, "tr")
+                let tr = add_element(parent, "tr")
                 for (let j = 0; j < generator.get_headers().length; j++) {
-                    add_element(row, "td", generator.get_next())
+                    let td = add_element(tr, "td")
+                    if (generator.next_is_input()) {
+                        add_element(td, "input", null, { type: "number", answer: generator.get_next(), required: true, step: "any" })
+                    } else {
+                        td.innerHTML = generator.get_next()
+                    }
                 }
             }
         }
+        function check_answers(nodes) {
+            nodes.forEach((node) => {
+                const value = node.value
+                const answer = node.getAttribute("answer")
+                node.className = value == answer ? "correct" : "incorrect"
+            })
+        }
+
+
 
     </script>
 

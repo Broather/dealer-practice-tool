@@ -54,4 +54,12 @@ export class Generator {
             return null
         }
     }
+    next_is_input() {
+        if (this.cursor < this.count * this.get_headers().length) {
+            const key = this.get_headers()[this.cursor % this.get_headers().length]
+            return this.data[key] == column.ANSWER
+        } else {
+            return null
+        }
+    }
 }
